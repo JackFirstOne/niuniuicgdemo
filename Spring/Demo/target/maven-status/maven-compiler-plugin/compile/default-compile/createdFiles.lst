@@ -1,0 +1,8 @@
+com\demo\controller\UserController.class
+com\demo\dao\impl\UserDaoImpl.class
+com\demo\dao\impl\UserDaoImpl$1.class
+com\demo\domain\User.class
+com\demo\dao\UserDao.class
+com\demo\domain\Role.class
+com\demo\service\UserService.class
+com\demo\service\impl\UserServiceImpl.class

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/HttpDemo/HttpDemo" />
+    <file type="web" url="file://$PROJECT_DIR$/maven-parent/maven-web" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringMVC" />
+    <file type="web" url="file://$PROJECT_DIR$/SpringWeb/SSM" />
+    <file type="web" url="file://$PROJECT_DIR$/SSM" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/SpringWeb/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/Demo/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/SSM/SSM/pom.xml" />
+        <option value="$PROJECT_DIR$/SSM/pom.xml" />
+        <option value="$PROJECT_DIR$/parent/pom.xml" />
+        <option value="$PROJECT_DIR$/maven-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/HttpDemo/HttpDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/JPA_Demo/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringJPA/pom.xml" />
+        <option value="$PROJECT_DIR$/JpaSpec/pom.xml" />
+        <option value="$PROJECT_DIR$/ManyToMany/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBoot/pom.xml" />
+        <option value="$PROJECT_DIR$/RabbitMQ/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/SpringWeb/SSM/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringWeb/SSMDemo/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

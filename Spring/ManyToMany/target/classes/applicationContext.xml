@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/jpa
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <!--spring 和 spring jpa配置-->
+
+    <!--创建数据库连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:13306/test"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123456"></property>
+
+    </bean>
+
+    <!--entityManagerFactory对象管理-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!--实体类所在的包 , 配置后spring会扫描该包下所有实体类，并实现自动注入-->
+        <property name="packagesToScan" value="com.demo.domain"></property>
+        <!--jpa实现方式：服务提供者-->
+        <property name="persistenceProvider" >
+            <bean  class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
+        </property>
+        <!--jpa提供者适配器-->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <!--配置是否自动创建数据库表    -->
+                <property name="generateDdl" value="false"></property>
+                <!--指定数据库类型-->
+                <property name="database" value="MYSQL"></property>
+                <!--数据库方言  -->
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"></property>
+                <!--显示sql语句-->
+                <property name="showSql" value="true"></property>
+
+            </bean>
+        </property>
+        <!--jpa Dalect -->
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
+        </property>
+
+        <!--注入jpa配置信息:加载jpa的基本配置信息和 jpa实现方式的配置信息-->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop> <!--create-->
+            </props>
+        </property>
+    </bean>
+
+    <!--整合spring datajpa-->
+    <jpa:repositories base-package="com.demo.dao"
+                      transaction-manager-ref="transaction"
+                      entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
+    <!--配置事务管理器-->
+    <bean id="transaction" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+    </bean>
+
+    <!--声明式事务-->
+
+    <!--注解扫描包-->
+    <context:component-scan base-package="com.demo"></context:component-scan>
+
+</beans>
+
+

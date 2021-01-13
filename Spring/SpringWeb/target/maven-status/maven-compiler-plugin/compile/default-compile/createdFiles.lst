@@ -1,0 +1,5 @@
+com\xxx\service\impl\UserServiceImpl.class
+com\xxx\dao\UserDao.class
+com\xxx\dao\impl\UserDaoImpl.class
+com\xxx\service\UserService.class
+com\xxx\web\UserServlet.class

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+     <!--配置数据源 druid连接池-->
+     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+         <property name="url" value="jdbc:mysql://localhost:13306/ssmtest"></property>
+         <property name="username" value="root"></property>
+         <property name="password" value="123456"></property>
+     </bean>
+
+     <!--配置spring整合mybatis框架的SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+         <property name="dataSource" ref="dataSource"></property>
+         <!--启用实体类别名，扫描包，指定创建别名-->
+         <property name="typeAliasesPackage" value="com.split.pojo"></property>
+    </bean>
+
+     <!--配置全局dao层包扫描-->
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+         <property name="basePackage" value="com.split.dao"></property>
+     </bean>
+
+</beans>

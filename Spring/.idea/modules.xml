@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LuceneDemo/LuceneDemo.iml" filepath="$PROJECT_DIR$/LuceneDemo/LuceneDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LuceneTest/LuceneTest.iml" filepath="$PROJECT_DIR$/LuceneTest/LuceneTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Spring.iml" filepath="$PROJECT_DIR$/.idea/Spring.iml" />
+    </modules>
+  </component>
+</project>

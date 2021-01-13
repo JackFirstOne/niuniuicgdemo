@@ -1,0 +1,12 @@
+{
+  "groups": [
+    {
+      "name": "jdbc",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.demo.config.JdbcConfig",
+      "sourceMethod": "getDataSource()"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

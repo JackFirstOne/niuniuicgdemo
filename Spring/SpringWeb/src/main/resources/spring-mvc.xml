@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+      <!--组件扫描1-->
+      <context:component-scan base-package="com.test.controller"></context:component-scan>
+
+      <!--组件扫描2：include-filter:包含扫描，exclude-filter:不包含扫描-->
+     <!-- <context:component-scan base-package="com.xxx">
+            <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+      </context:component-scan>-->
+
+      <!--springmvc ->handlerMapping ->handlerAdapter ->ViewResolver-->
+
+      <!--内部资源视图解析器-->
+      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/jsp/"></property>
+            <property name="suffix" value=".jsp"></property>
+      </bean>
+
+      <!--配置 handlerAdapter-->
+    <!--  <bean  class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+            &lt;!&ndash;配置消息转换器 :注入JSON转换string器&ndash;&gt;
+            <property name="messageConverters">
+                   <list>
+                       <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+                   </list>
+
+            </property>
+
+      </bean>-->
+      <!--mvc自动配置启动器：内置json转string ,添加自定义转换器-->
+      <mvc:annotation-driven conversion-service="dateConverter"></mvc:annotation-driven>
+
+      <!--访问静态资源方式1-->
+      <!--开放资源访问权限 -->
+    <!--  <mvc:resources mapping="/js/**" location="/js/"/>
+
+      <mvc:resources mapping="/img/**" location="/img/"/>-->
+
+      <!--访问静态资源方式2-->
+      <!--当springmvc找不到资源时，交由原始servlet（tomcat）查找资源-->
+      <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+      <!--声明日期类型转换器-->
+      <bean id="dateConverter" class="org.springframework.context.support.ConversionServiceFactoryBean">
+            <property name="converters">
+                  <list>
+                        <bean class="com.test.converter.DateConverter"></bean>
+                  </list>
+            </property>
+      </bean>
+
+       <!--文件上传解析器-->
+      <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+            <!--上传文件总大小-->
+            <property name="maxUploadSize" value="5242800"></property>
+            <!--上传单个文件大小-->
+            <property name="maxUploadSizePerFile" value="5242800"></property>
+            <!--上传文件编码类型-->
+            <property name="defaultEncoding" value="UTF-8"></property>
+      </bean>
+      
+      <!--配置Interceptor-->
+      <mvc:interceptors>
+            <!--配置在前面的先执行，配置在后面的后执行-->
+            <mvc:interceptor>
+                  <mvc:mapping path="/**"/>
+                  <bean class="com.test.interceptor.MyInterceptor2"></bean>
+            </mvc:interceptor>
+            <mvc:interceptor>
+                  <!--配置对那些资源进行拦截-->
+                  <mvc:mapping path="/**"/>
+                  <!--配置拦截器类-->
+                  <bean class="com.test.interceptor.MyInterceptor"></bean>
+            </mvc:interceptor>
+            <mvc:interceptor>
+                  <mvc:mapping path="/**"/>
+                  <bean class="com.test.interceptor.LoginInterceptor"></bean>
+            </mvc:interceptor>
+      </mvc:interceptors>
+
+      <!--  拦截器执行顺序
+            preHandle22......
+            preHandle......
+            目标资源执行......
+            postHandle......
+            postHandle22......
+            afterCompletion......
+            afterCompletion22......
+       -->
+
+      <!--配置异常解析器 :springmvc自带异常处理-->
+     <!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+            <property name="defaultErrorView" value="errr"></property>
+            <property name="exceptionMappings">
+                   <map>
+                         <entry key="java.lang.NullPointerException" value="nullErr"></entry>
+                         <entry key="com.test.exception.MyException" value="myErr"></entry>
+                   </map>
+            </property>
+      </bean>-->
+
+      <!--自定义异常处理-->
+      <bean class="com.test.exception.MyDemoException"></bean>
+</beans>

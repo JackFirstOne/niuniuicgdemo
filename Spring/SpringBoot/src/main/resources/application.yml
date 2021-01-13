@@ -1,0 +1,45 @@
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:13306/test
+  username: root
+  password: 123456
+#yml或者yaml文件，下层级需要空两格，值前面需要空一格
+#集合需要前面加 -
+#yml配置文件可以有多个，多个配置文件名称必须为：appplication-***.yml,并且多个文件必须在applicaiton.yml文件中激活
+#yml和properties同名文件可以同时存在，如同名且配置相同，以properties为主
+
+#配置指定其他配置文件名称,激活其他配置文件
+spring:
+  profiles:
+    active: abc,def
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/test
+    username: root
+    password: 123456
+  redis:   #配置redis
+    host: localhost
+    port: 6379
+#配置view视图解析器前缀，后缀
+#  mvc:
+#    view:
+#      prefix:
+
+#tomcat端口修改
+server:
+  port: 80
+
+#日志记录级别
+logging:
+  level:
+    org.springframework: info
+    com.demo: debug
+
+#配置mybatis
+mybatis:
+  #配置实体类别名包
+  type-aliases-package: com.demo
+  #映射文件路径
+  #mapper-locations: classpath:mappter/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #日志实现 后台输出
