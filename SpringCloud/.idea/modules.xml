@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../SpringCloude_parent/SpringCloud_customer/SpringCloud_customer.iml" filepath="$PROJECT_DIR$/../SpringCloude_parent/SpringCloud_customer/SpringCloud_customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_customer/SpringCloude_customer.iml" filepath="$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_customer/SpringCloude_customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_parent.iml" filepath="$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_userService/SpringCloude_userService.iml" filepath="$PROJECT_DIR$/../SpringCloude_parent/SpringCloude_userService/SpringCloude_userService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../erurka-server/erurka-server.iml" filepath="$PROJECT_DIR$/../erurka-server/erurka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SpringCloude_parent/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/../SpringCloude_parent/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/http-demo/http-demo.iml" filepath="$PROJECT_DIR$/http-demo/http-demo.iml" />
+    </modules>
+  </component>
+</project>

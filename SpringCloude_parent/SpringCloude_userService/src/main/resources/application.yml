@@ -1,0 +1,21 @@
+server:
+  port: ${port:9090}
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/test
+    username: root
+    password: 123456
+  application:
+    name: user-service  #配置服务名称
+mybatis:
+  type-aliases-package: com.demo.pojo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka  #将服务配置到eureka
+  instance:
+    prefer-ip-address: true  #请求使用ip,不使用localhost
+    ip-address: 127.0.0.1    #指定ip地址
+    lease-renewal-interval-in-seconds: 5  #续约间隔时间
+    lease-expiration-duration-in-seconds: 5  #续约失效时间

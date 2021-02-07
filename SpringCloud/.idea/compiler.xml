@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="http-demo" />
+        <module name="SpringCloude_userService" />
+        <module name="SpringCloude_customer" />
+        <module name="SpringCloud_customer" />
+        <module name="eureka-server" />
+        <module name="erurka-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="erurka-server" target="1.5" />
+      <module name="eureka-server" target="1.8" />
+      <module name="http-demo" target="1.8" />
+      <module name="SpringCloud_customer" target="1.8" />
+      <module name="SpringCloude_customer" target="1.8" />
+      <module name="SpringCloude_parent" target="1.8" />
+      <module name="SpringCloude_userService" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringCloud_customer" options="-parameters" />
+      <module name="SpringCloude_customer" options="-parameters" />
+      <module name="SpringCloude_userService" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="http-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

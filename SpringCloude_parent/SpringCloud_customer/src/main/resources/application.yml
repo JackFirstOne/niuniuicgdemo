@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: customer-demo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000  #设置访问超时异常处理时间
